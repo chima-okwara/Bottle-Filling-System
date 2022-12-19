@@ -2,7 +2,6 @@
 platform = atmelavr
 framework = arduino
 board = uno
-upload_protocol = arduino-ft232r
 
 [env:nanoatmega328]
 platform = atmelavr
