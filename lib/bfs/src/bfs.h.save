@@ -4,8 +4,9 @@
 
 enum direction_t { backwards, forwards};
 
-#define MAX 50
-#define STEPS 30
+#define MAX   50
+#define STEPS 00
+#define DELAY 600
 
 
 //Connections:
@@ -19,8 +20,8 @@ extern bool start;
 //Functions:
 extern void setup(void);
 extern void loop(void);
-extern void step(direction_t, int);
+extern void step(direction_t, const int&);
 extern void fillBottles(uint8_t &num);               //To fill bottles
-extern  void getNoBottles(void);
+extern void getNoBottles(void);
 
 #endif // __BFS__

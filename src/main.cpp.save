@@ -9,7 +9,7 @@ uint8_t dirPin(PB11), stepperPin(PB10), pump(PB0), sw1(PA7), sw2(PA6), sw3(PA5),
         buzzer(PA4);
 
 //Variables:
-uint8_t bottleNo (1);
+uint8_t bottleNo (1)2;
 bool start (false);
 
 void setup()
@@ -20,7 +20,7 @@ void setup()
   pinMode(sw1, INPUT_PULLUP);
   pinMode(sw2, INPUT_PULLUP);
   pinMode(sw3, INPUT_PULLUP);
-  pinMode(buzzer, INPUT);
+  pinMode(buzzer, OUTPUT);
 
 
   digitalWrite(pump, HIGH);         //Turns pump off

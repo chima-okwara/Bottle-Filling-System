@@ -11,9 +11,8 @@ void step(const uint8_t& dir, const int &steps)
    digitalWrite(stepperPin, LOW);
    delayMicroseconds(DELAY);
  }
-
- digitalWrite(dirPin, LOW);
- digitalWrite(stepperPin, LOW);
+ 
+ digit
 }
 
 void fillBottles(uint8_t &num)
