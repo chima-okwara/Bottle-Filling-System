@@ -1,12 +1,15 @@
 #include <Arduino.h>
-#include <LiquidCrystal.h>
+#include <LiquidCrystal_I2C.h>
 #include <Wire.h>
 #include "bfs.h"
 
+void setup(void);
+void loop(void);
+
 //Connections:
-LiquidCrystal lcd(PB12, PB13, PB14, PA8, PA11, PA12);
-uint8_t dirPin(PB11), stepperPin(PB10), pump(PB0), sw1(PA7), sw2(PA6), sw3(PA5),
-        buzzer(PA4);
+LiquidCrystal_I2C lcd (0x27, 16, 2);
+uint8_t dirPin(12), stepperPin(11), pump(10), sw1(10), sw2(9), sw3(8),
+        buzzer(13);
 
 //Variables:
 uint8_t bottleNo (1);
@@ -23,13 +26,13 @@ void setup()
   pinMode(buzzer, OUTPUT);
 
 
-  digitalWrite(pump, HIGH);         //Turns pump off
+  digitalWrite(pump, LOW);         //Turns pump off
   delay(500);
   digitalWrite(buzzer, LOW);
 
 
   //Print startup message.
-  lcd.begin(16, 2);
+  lcd.begin();
   lcd.setCursor(0, 0);
   lcd.print("      UER       ");
   delay(300);

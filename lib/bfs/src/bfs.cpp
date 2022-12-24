@@ -4,16 +4,14 @@
 void step(const uint8_t& dir, const int &steps)
 {
  digitalWrite(dirPin, dir);
- for(int i=0; i<steps; i++)
+
+ for(int i = 0; i < steps; i++)
  {
    digitalWrite(stepperPin, HIGH);
    delayMicroseconds(DELAY);//Adjust the speed of motor. Increase the value, motor speed become slower.
    digitalWrite(stepperPin, LOW);
    delayMicroseconds(DELAY);
  }
-
- digitalWrite(dirPin, LOW);
- digitalWrite(stepperPin, LOW);
 }
 
 void fillBottles(uint8_t &num)
@@ -29,10 +27,10 @@ void fillBottles(uint8_t &num)
     delay(500);
     digitalWrite(buzzer, LOW);
 
-    step(HIGH, STEPS);
-    digitalWrite(pump, LOW);
-    delay(5000);
+    step(front, STEPS);
     digitalWrite(pump, HIGH);
+    delay(3000);
+    digitalWrite(pump, LOW);
 
     lcd.clear();
     lcd.setCursor(0, 0);
@@ -53,7 +51,8 @@ void fillBottles(uint8_t &num)
   delay(500);
   digitalWrite(buzzer, LOW);
   lcd.clear();
-  step(LOW, (STEPS*num));
+  step(back, (STEPS*num));
+  digitalWrite(pump, LOW);
   num = 1;
 }
 
