@@ -1,27 +1,28 @@
 #ifndef __BFS__
 #define __BFS__
-#include <LiquidCrystal.h>
+#include <LiquidCrystal_I2C.h>
+#includ
 
-enum direction_t { backwards, forwards};
-
-#define MAX   50
-#define STEPS 00
-#define DELAY 600
+#define MAX   6
+#define STEPS 900
+#define __DELAY__ 300
+#define front HIGH
+#define back  LOW
 
 
 //Connections:
-extern LiquidCrystal lcd;
-extern uint8_t dirPin, stepperPin, pump, sw1, sw2, sw3, buzzer;
+extern LiquidCrystal_I2C lcd;
+//extern uint8_t dirPin, stepperPin, pump, sw1, sw2, sw3, buzzer;
+extern uint8_t sw1, sw2, sw3;
+extern uint8_t pump, buzzer, dirPin, stepperPin;
 
 //Variables:
 extern uint8_t bottleNo;
 extern bool start;
 
 //Functions:
-extern void setup(void);
-extern void loop(void);
-extern void step(direction_t, const int&);
-extern void fillBottles(uint8_t &num);               //To fill bottles
-extern void getNoBottles(void);
+void step(const uint8_t&, const int&);
+void fillBottles(uint8_t &num);               //To fill bottles
+void getNoBottles(void);
 
 #endif // __BFS__

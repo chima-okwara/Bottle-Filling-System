@@ -1,29 +1,50 @@
-#include <Arduino.h>
+/#include <Arduino.h>
 #include <LiquidCrystal.h>
 #include <Wire.h>
 #include "bfs.h"
 
+void setup(void);
+void loop(void);
+
 //Connections:
-LiquidCrystal lcd(PB12, PB13, PB14, PA8, PA11, PA12);
-uint8_t dirPin(PB11), stepperPin(PB10), pump(PB0), sw1(PA7), sw2(PA6), sw3(PA5),
-        buzzer(PA4);
+LiquidCrystal lcd (PB11, PB10, PB1, PB0, PA7, PA6);
+
+uint8_t sw1 (PA15), sw2 (PB3), sw3 (PB4);
+uint8_t pump (PA11), buzzer (PA12), dirPin (PB6), stepperPin (PB5);
+
+uint8_t ms1 (PB9), ms2 (PB8), ms3 (PB7);
 
 //Variables:
-uint8_t bottleNo (1)2;
+uint8_t bottleNo (1);
 bool start (false);
 
 void setup()
 {
-  pinMode(dirPin, OUTPUT);
-  pinMode(stepperPin, OUTPUT);
-  pinMode(pump, OUTPUT);
   pinMode(sw1, INPUT_PULLUP);
   pinMode(sw2, INPUT_PULLUP);
   pinMode(sw3, INPUT_PULLUP);
+
+  pinMode(pump, OUTPUT);
   pinMode(buzzer, OUTPUT);
+  pinMode(dirPin, OUTPUT);
+  pinMode(stepperPin, OUTPUT);
+  pinMode(ms1, OUTPUT);
+  pinMode(ms2, OUTPUT);
+  pinMode(ms3, OUTPUT);
 
 
-  digitalWrite(pump, HIGH);         //Turns pump off
+  digitalWrite(dirPin, LOW);
+  digitalWrite(stepperPin, LOW);
+
+  digitalWrite(ms1, LOW);
+  digitalWrite(ms2, HIGH);
+  digitalWrite(ms3, LOW);
+
+
+
+  digitalWrite(pump, LOW);
+
+  digitalWrite(buzzer, HIGH);
   delay(500);
   digitalWrite(buzzer, LOW);
 

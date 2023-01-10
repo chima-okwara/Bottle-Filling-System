@@ -3,3 +3,7 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
+platformio.cbp
+platformio.cpb.save
+platformio.ini.save
+platformio.layout.save

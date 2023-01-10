@@ -155,14 +155,11 @@
 			<Add directory="/home/chima/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include-fixed" />
 			<Add directory="/home/chima/.platformio/packages/toolchain-atmelavr/avr/include" />
 		</Compiler>
-		<Unit filename="lib/bfs/bfs.h.save" />
 		<Unit filename="lib/bfs/src/bfs.cpp" />
 		<Unit filename="lib/bfs/src/bfs.h" />
 		<Unit filename="platformio.ini" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/main.cpp.save" />
-		<Extensions>
-			<lib_finder disable_auto="1" />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
