@@ -1,3 +1,8 @@
+//TODO:
+//*******Measure steps for motion by required distance
+//*******Adjust first iteration of bottle fill routine.
+
+
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 #include <Wire.h>
@@ -7,7 +12,8 @@ void setup(void);
 void loop(void);
 
 //Connections:
-LiquidCrystal lcd (PB11, PB10, PB1, PB0, PA7, PA6);
+// LiquidCrystal lcd (PB11, PB10, PB1, PB0, PA7, PA6);
+LiquidCrystal lcd (PA6, PA7, PB0, PB1, PB10, PB11);
 
 uint8_t sw1 (PA15), sw2 (PB3), sw3 (PB4);
 uint8_t pump (PA11), buzzer (PA12), dirPin (PB6), stepperPin (PB5);
@@ -28,6 +34,7 @@ void setup()
   pinMode(buzzer, OUTPUT);
   pinMode(dirPin, OUTPUT);
   pinMode(stepperPin, OUTPUT);
+
   pinMode(ms1, OUTPUT);
   pinMode(ms2, OUTPUT);
   pinMode(ms3, OUTPUT);

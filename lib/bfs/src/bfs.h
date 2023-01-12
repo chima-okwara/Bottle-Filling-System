@@ -4,10 +4,11 @@
 #include <Wire.h>
 
 #define MAX   6
-#define STEPS 900
+#define STEPS 1000
 #define __DELAY__ 300
-#define front HIGH
-#define back  LOW
+#define front LOW
+#define back  HIGH
+#define init_steps 1200 //TODO: Change after measuring
 
 
 //Connections:

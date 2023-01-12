@@ -20,6 +20,36 @@ void fillBottles(uint8_t &num)
 {
   for(int i = 0; (i < num); ++i)
   {
+    if(i == 0)
+    {
+      lcd.clear();
+      lcd.noCursor();
+      lcd.setCursor(0, 0);
+      lcd.print("Filling bottle");
+      lcd.print(i + 1);
+      digitalWrite(buzzer, HIGH);
+      delay(500);
+      digitalWrite(buzzer, LOW);
+
+      step(back, 230);
+      delay(50);
+
+      step(front, init_steps);
+      digitalWrite(pump, HIGH);
+      delay(3000);
+      digitalWrite(pump, LOW);
+
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      lcd.print("Bottle ");
+      lcd.print(i + 1);
+      lcd.print(" filled.");
+      delay(1000);
+      continue;
+    }
+    // if(i == 0)
+    //   continue;
+
     lcd.clear();
     lcd.noCursor();
     lcd.setCursor(0, 0);
