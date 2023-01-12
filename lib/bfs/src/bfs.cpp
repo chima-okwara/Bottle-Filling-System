@@ -20,7 +20,41 @@ void fillBottles(uint8_t &num)
 {
   for(int i = 0; (i < num); ++i)
   {
-    if(i == 0)
+    switch (i)
+    {
+    case 0:
+      {
+        lcd.clear();
+        lcd.noCursor();
+        lcd.setCursor(0, 0);
+        lcd.print("Filling bottle");
+        lcd.print(i + 1);
+        digitalWrite(buzzer, HIGH);
+        delay(500);
+        digitalWrite(buzzer, LOW);
+
+        step(back, 230);
+        delay(50);
+
+        step(front, init_steps);
+        digitalWrite(pump, HIGH);
+        delay(4500);
+        digitalWrite(pump, LOW);
+        delay(1200);
+
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("Bottle ");
+        lcd.print(i + 1);
+        lcd.print(" filled.");
+        delay(1000);
+        break;
+      }
+
+    case 1:
+    case 2:
+    case 3:
+    case 5:
     {
       lcd.clear();
       lcd.noCursor();
@@ -31,13 +65,11 @@ void fillBottles(uint8_t &num)
       delay(500);
       digitalWrite(buzzer, LOW);
 
-      step(back, 230);
-      delay(50);
-
-      step(front, init_steps);
+      step(front, STEPS);
       digitalWrite(pump, HIGH);
-      delay(3000);
+      delay(4500);
       digitalWrite(pump, LOW);
+      delay(1200);
 
       lcd.clear();
       lcd.setCursor(0, 0);
@@ -45,31 +77,38 @@ void fillBottles(uint8_t &num)
       lcd.print(i + 1);
       lcd.print(" filled.");
       delay(1000);
-      continue;
+      break;
     }
-    // if(i == 0)
-    //   continue;
 
-    lcd.clear();
-    lcd.noCursor();
-    lcd.setCursor(0, 0);
-    lcd.print("Filling bottle");
-    lcd.print(i + 1);
-    digitalWrite(buzzer, HIGH);
-    delay(500);
-    digitalWrite(buzzer, LOW);
+    case 4:
+    {
+      lcd.clear();
+      lcd.noCursor();
+      lcd.setCursor(0, 0);
+      lcd.print("Filling bottle");
+      lcd.print(i + 1);
+      digitalWrite(buzzer, HIGH);
+      delay(500);
+      digitalWrite(buzzer, LOW);
 
-    step(front, STEPS);
-    digitalWrite(pump, HIGH);
-    delay(3000);
-    digitalWrite(pump, LOW);
+      step(front, STEPS + CASE4);
+      digitalWrite(pump, HIGH);
+      delay(4500);
+      digitalWrite(pump, LOW);
+      delay(1200);
 
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("Bottle ");
-    lcd.print(i + 1);
-    lcd.print(" filled.");
-    delay(1000);
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      lcd.print("Bottle ");
+      lcd.print(i + 1);
+      lcd.print(" filled.");
+      delay(1000);
+      break;
+    }
+
+
+
+  }
   }
 
   lcd.clear();
@@ -83,11 +122,12 @@ void fillBottles(uint8_t &num)
   delay(500);
   digitalWrite(buzzer, LOW);
   lcd.clear();
-  step(back, (STEPS*num));
+  step(back, (STEPS*num) + CASE4);
   digitalWrite(pump, LOW);
   num = 1;
-}
 
+
+}
 void getNoBottles()
 {
   lcd.setCursor(0, 0);

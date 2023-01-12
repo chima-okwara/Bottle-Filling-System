@@ -1,5 +1,5 @@
 #include <bfs.h>
-#include <LiquidCrystal>
+#include <LiquidCrystal.h>
 #include <Wire.h>
 #include <Arduino.h>
 
@@ -20,26 +20,96 @@ void fillBottles(uint8_t &num)
 {
   for(int i = 0; (i < num); ++i)
   {
-    lcd.clear();
-    lcd.noCursor();
-    lcd.setCursor(0, 0);
-    lcd.print("Filling bottle");
-    lcd.print(i + 1);
-    digitalWrite(buzzer, HIGH);
-    delay(500);
-    digitalWrite(buzzer, LOW);
+    switch (i)
+    {
+    case 0:
+      {
+        lcd.clear();
+        lcd.noCursor();
+        lcd.setCursor(0, 0);
+        lcd.print("Filling bottle");
+        lcd.print(i + 1);
+        digitalWrite(buzzer, HIGH);
+        delay(500);
+        digitalWrite(buzzer, LOW);
 
-    step(front, STEPS);
-    digitalWrite(pump, HIGH);
-    delay(3000);
-    digitalWrite(pump, LOW);
+        step(back, 230);
+        delay(50);
 
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("Bottle ");
-    lcd.print(i + 1);
-    lcd.print(" filled.");
-    delay(1000);
+        step(front, init_steps);
+        digitalWrite(pump, HIGH);
+        delay(4500);
+        digitalWrite(pump, LOW);
+        delay(1200);
+
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("Bottle ");
+        lcd.print(i + 1);
+        lcd.print(" filled.");
+        delay(1000);
+        break;
+      }
+
+    case 1:
+    case 2:
+    case 3:
+    case 5:
+    {
+      lcd.clear();
+      lcd.noCursor();
+      lcd.setCursor(0, 0);
+      lcd.print("Filling bottle");
+      lcd.print(i + 1);
+      digitalWrite(buzzer, HIGH);
+      delay(500);
+      digitalWrite(buzzer, LOW);
+
+      step(front, STEPS);
+      digitalWrite(pump, HIGH);
+      delay(4500);
+      digitalWrite(pump, LOW);
+      delay(1200);
+
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      lcd.print("Bottle ");
+      lcd.print(i + 1);
+      lcd.print(" filled.");
+      delay(1000);
+      break;
+    }
+
+    case 4:
+    {
+      lcd.clear();
+      lcd.noCursor();
+      lcd.setCursor(0, 0);
+      lcd.print("Filling bottle");
+      lcd.print(i + 1);
+      digitalWrite(buzzer, HIGH);
+      delay(500);
+      digitalWrite(buzzer, LOW);
+
+      step(front, STEPS );
+      digitalWrite(pump, HIGH);
+      delay(4500);
+      digitalWrite(pump, LOW);
+      delay(1200);
+
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      lcd.print("Bottle ");
+      lcd.print(i + 1);
+      lcd.print(" filled.");
+      delay(1000);
+      break;
+       break;
+    }
+
+
+
+  }
   }
 
   lcd.clear();
@@ -56,8 +126,9 @@ void fillBottles(uint8_t &num)
   step(back, (STEPS*num));
   digitalWrite(pump, LOW);
   num = 1;
-}
 
+
+}
 void getNoBottles()
 {
   lcd.setCursor(0, 0);

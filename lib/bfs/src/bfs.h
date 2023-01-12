@@ -5,7 +5,8 @@
 
 #define MAX   6
 #define STEPS 1000
-#define __DELAY__ 300
+#define CASE4 150
+#define __DELAY__ 120
 #define front LOW
 #define back  HIGH
 #define init_steps 1200 //TODO: Change after measuring
