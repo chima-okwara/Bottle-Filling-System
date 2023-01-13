@@ -38,9 +38,9 @@ void fillBottles(uint8_t &num)
 
         step(front, init_steps);
         digitalWrite(pump, HIGH);
-        delay(4500);
+        delay(pumpDel);
         digitalWrite(pump, LOW);
-        delay(1200);
+        delay(trickleDel);
 
         lcd.clear();
         lcd.setCursor(0, 0);
@@ -67,9 +67,9 @@ void fillBottles(uint8_t &num)
 
       step(front, STEPS);
       digitalWrite(pump, HIGH);
-      delay(4500);
+      delay(pumpDel);
       digitalWrite(pump, LOW);
-      delay(1200);
+      delay(trickleDel);
 
       lcd.clear();
       lcd.setCursor(0, 0);
@@ -93,9 +93,9 @@ void fillBottles(uint8_t &num)
 
       step(front, STEPS + CASE4);
       digitalWrite(pump, HIGH);
-      delay(4500);
+      delay(pumpDel);
       digitalWrite(pump, LOW);
-      delay(1200);
+      delay(trickleDel);
 
       lcd.clear();
       lcd.setCursor(0, 0);
@@ -105,8 +105,6 @@ void fillBottles(uint8_t &num)
       delay(1000);
       break;
     }
-
-
 
   }
   }
@@ -141,6 +139,58 @@ void getNoBottles()
     bottleNo--;
   bottleNo = constrain(bottleNo, 1, 6);
   lcd.print(bottleNo);
+
+  start = (!digitalRead(sw1) ? true : false );
+  delay(200);
+}
+
+void getPumpLevel()
+{
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Pump Level:    ");
+  lcd.setCursor(0, 1);
+  lcd.print("Press 'Start'...");
+  lcd.setCursor(14, 0);
+  if(!digitalRead(sw2))
+    level++;
+  if(!digitalRead(sw3))
+    level--;
+  level = constrain(level, 1, 5);
+  lcd.print(level);
+
+  switch(level)
+  {
+    case 1:
+    {
+      pumpDel = MINPUMPDEL;
+      break;
+    }
+
+    case 2:
+    {
+      pumpDel = 3500;
+      break;
+    }
+
+    case 3:
+    {
+      pumpDel = 4500;
+      break;
+    }
+
+    case 4:
+    {
+      pumpDel = 5500;
+      break;
+    }
+
+    case 5:
+    {
+      pumpDel = 6500;
+      break;
+    }
+  }
 
   start = (!digitalRead(sw1) ? true : false );
   delay(200);

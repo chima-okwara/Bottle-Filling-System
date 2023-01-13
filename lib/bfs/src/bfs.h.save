@@ -1,17 +1,19 @@
 #ifndef __BFS__
 #define __BFS__
-#include <LiquidCrystal_I2C.h>
-#includ
+#include <LiquidCrystal.h>
+#include <Wire.h>
 
 #define MAX   6
-#define STEPS 900
-#define __DELAY__ 300
-#define front HIGH
-#define back  LOW
+#define STEPS 1000
+#define CASE4 100
+#define __DELAY__ 120
+#define front LOW
+#define back  HIGH
+#define init_steps 1200 //TODO: Change after measuring
 
 
 //Connections:
-extern LiquidCrystal_I2C lcd;
+extern LiquidCrystal lcd;
 //extern uint8_t dirPin, stepperPin, pump, sw1, sw2, sw3, buzzer;
 extern uint8_t sw1, sw2, sw3;
 extern uint8_t pump, buzzer, dirPin, stepperPin;

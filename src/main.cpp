@@ -1,8 +1,3 @@
-//TODO:
-//*******Measure steps for motion by required distance
-//*******Adjust first iteration of bottle fill routine.
-
-
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 #include <Wire.h>
@@ -23,6 +18,7 @@ uint8_t ms1 (PB9), ms2 (PB8), ms3 (PB7);
 //Variables:
 uint8_t bottleNo (1);
 bool start (false);
+uint8_t pumpDel (MINPUMPDEL), level (DEFAULTLEVEL), trickleDel (1500);
 
 void setup()
 {
@@ -60,7 +56,7 @@ void setup()
   lcd.begin(16, 2);
   lcd.setCursor(0, 0);
   lcd.print("      UER       ");
-  delay(300);
+  delay(500);
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("Automatic Bottle");
@@ -97,7 +93,11 @@ void loop()
   while(!start)
     getNoBottles();
 
-  delay(1000);
+  while(!start)
+    getPumpLevel();
+
+
+  delay(500);
   fillBottles(bottleNo);
   start = false;
 }
