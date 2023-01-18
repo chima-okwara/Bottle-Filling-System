@@ -148,7 +148,7 @@ void getPumpLevel()
 {
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("Pump Level:    ");
+  lcd.print("Fill Level:    ");
   lcd.setCursor(0, 1);
   lcd.print("Press 'Start'...");
   lcd.setCursor(14, 0);

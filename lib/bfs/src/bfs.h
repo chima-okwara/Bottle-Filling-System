@@ -11,8 +11,8 @@
 #define back  HIGH
 #define init_steps 1200 //TODO: Change after measuring
 #define DEFAULTLEVEL 3
-#define MAXPUMPDEL 6500
-#define MINPUMPDEL 2000
+#define MAXPUMPDEL 6500u
+#define MINPUMPDEL 2000u
 
 
 //Connections:
@@ -20,8 +20,8 @@ extern LiquidCrystal lcd;
 //extern uint8_t dirPin, stepperPin, pump, sw1, sw2, sw3, buzzer;
 extern uint8_t sw1, sw2, sw3;
 extern uint8_t pump, buzzer, dirPin, stepperPin;
-extern uint8_t pumpDel, trickleDel;
-extern uint8_t level;
+extern uint32_t pumpDel, trickleDel;
+extern uint32_t level;
 
 //Variables:
 extern uint8_t bottleNo;

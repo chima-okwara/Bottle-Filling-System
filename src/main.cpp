@@ -18,7 +18,7 @@ uint8_t ms1 (PB9), ms2 (PB8), ms3 (PB7);
 //Variables:
 uint8_t bottleNo (1);
 bool start (false);
-uint8_t pumpDel (MINPUMPDEL), level (DEFAULTLEVEL), trickleDel (1500);
+uint32_t pumpDel ( MINPUMPDEL ), level (DEFAULTLEVEL), trickleDel (1500);
 
 void setup()
 {
@@ -93,11 +93,13 @@ void loop()
   while(!start)
     getNoBottles();
 
+  start = false;
+
   while(!start)
     getPumpLevel();
 
 
-  delay(500);
+  delay(200);
   fillBottles(bottleNo);
   start = false;
 }
