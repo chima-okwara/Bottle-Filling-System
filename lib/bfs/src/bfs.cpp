@@ -169,25 +169,25 @@ void getPumpLevel()
 
     case 2:
     {
-      pumpDel = 3500;
+      pumpDel = MINPUMPDEL + 1500u;
       break;
     }
 
     case 3:
     {
-      pumpDel = 4500;
+      pumpDel = MINPUMPDEL + 2500u;
       break;
     }
 
     case 4:
     {
-      pumpDel = 5500;
+      pumpDel = MINPUMPDEL + 3500u;
       break;
     }
 
     case 5:
     {
-      pumpDel = 6500;
+      pumpDel = MAXPUMPDEL;
       break;
     }
   }
